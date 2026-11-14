@@ -2,8 +2,6 @@
 
 英文名 Busy Agents。它住在 Mac 菜单栏里，看本机各个端Agent现在在忙什么。
 
-[<img alt="下载 Mac 安装包 Busy-Agents-1.0.dmg" src="download-mac.svg" width="440">](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)
-
 直接下载：[Busy-Agents-1.0.dmg](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)
 
 <img alt="看看你的 Agent 都在忙些什么" src="poster.jpg" width="720">
