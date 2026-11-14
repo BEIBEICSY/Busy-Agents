@@ -6,7 +6,9 @@
 
 ## 下载
 
-1.0 安装盘在 [Releases](https://github.com/BEIBEICSY/Busy-Agents/releases/latest)。文件名是 `Agents 在忙啥-Busy Agents.dmg`。
+[下载 1.0](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)。文件名是 `Busy-Agents-1.0.dmg`。也可以从 [Releases](https://github.com/BEIBEICSY/Busy-Agents/releases/latest) 打开。
+
+双击打开后，磁盘标题是「Agents 在忙啥」，里面的应用是 Busy Agents。
 
 ## 安装
 
