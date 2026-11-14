@@ -1,0 +1,16 @@
+{
+  "name": "ai-tool-session-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server/index.js",
+    "build:mac": "bash scripts/build-macos-app.sh",
+    "package:mac": "bash scripts/package-macos-dmg.sh",
+    "notarize:mac": "bash scripts/notarize-macos-app.sh",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

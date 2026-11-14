@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# dependencies
+node_modules/
+
+# rebuildable Mac app (`npm run build:mac`)
+dist/
+
+# local browser automation traces
+.playwright-cli/
+
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json

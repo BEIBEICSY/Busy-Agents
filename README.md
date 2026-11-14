@@ -39,4 +39,19 @@
 - 不读取聊天正文，也不把任务、路径上传到别处。数据留在这台 Mac 上。
 - 一条记录看起来不对时，可以在任务上右键「这条数据不对我要反馈」。
 
+## 源码
+
+程序源码用 [MIT 许可证](LICENSE) 公开。可以克隆、修改，也可以发 Pull Request。
+
+```bash
+git clone https://github.com/BEIBEICSY/Busy-Agents.git
+cd Busy-Agents
+npm test
+npm run dev
+```
+
+本地页面是 http://127.0.0.1:4177 。需要 Node.js 20 或更高版本。
+
+Mac 菜单栏应用用 `npm run build:mac` 构建，需要 Xcode 命令行工具。签名和安装盘脚本在 `scripts/`。
+
 更新记录见 [CHANGELOG.md](CHANGELOG.md)。

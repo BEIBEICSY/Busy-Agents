@@ -1,0 +1,101 @@
+{
+  "tools": [
+    {
+      "id": "cursor-ide",
+      "name": "Cursor·IDE",
+      "type": ["gui"],
+      "processNames": ["Cursor"],
+      "commandKeywords": ["cursor"],
+      "windowTitleKeywords": ["Cursor"],
+      "preferredOpen": "cursor"
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "type": ["terminal"],
+      "processNames": ["codex"],
+      "commandKeywords": ["codex"],
+      "windowTitleKeywords": ["Codex"],
+      "preferredOpen": "terminal"
+    },
+    {
+      "id": "traework-desktop",
+      "name": "TraeWork·Desktop",
+      "type": ["gui"],
+      "processNames": ["TRAE SOLO CN", "TRAE Work CN", "TraeWork"],
+      "commandKeywords": ["TRAE SOLO CN", "TRAE Work", "TraeWork"],
+      "windowTitleKeywords": ["TRAE SOLO", "TRAE Work", "TraeWork"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "trae-ide",
+      "name": "Trae·IDE",
+      "type": ["gui"],
+      "processNames": ["Trae"],
+      "commandKeywords": ["/Trae.app/"],
+      "windowTitleKeywords": ["Trae"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "workbuddy-desktop",
+      "name": "WorkBuddy·Desktop",
+      "type": ["gui"],
+      "processNames": ["WorkBuddy"],
+      "commandKeywords": ["/WorkBuddy.app/"],
+      "windowTitleKeywords": ["WorkBuddy"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "wps-lingxi-desktop",
+      "name": "WPS灵犀·Desktop",
+      "type": ["gui"],
+      "processNames": ["WPS 灵犀"],
+      "commandKeywords": ["/WPS 灵犀.app/"],
+      "windowTitleKeywords": ["WPS 灵犀"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "wps-comate-desktop",
+      "name": "WPS Comate·Desktop",
+      "type": ["gui"],
+      "processNames": ["WPS Comate", "WPSComate"],
+      "commandKeywords": ["wpscomate", "WPSComate"],
+      "windowTitleKeywords": ["WPS Comate"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "hermes",
+      "name": "Hermes",
+      "type": ["gui", "terminal"],
+      "processNames": ["Hermes", "hermes"],
+      "commandKeywords": ["hermes"],
+      "windowTitleKeywords": ["Hermes"],
+      "preferredOpen": "app"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "type": ["terminal"],
+      "processNames": ["claude", "claude-code"],
+      "commandKeywords": ["claude", "claude-code"],
+      "windowTitleKeywords": ["Claude"],
+      "preferredOpen": "terminal"
+    }
+  ],
+  "terminalApps": ["Terminal", "iTerm2", "Warp", "Ghostty"],
+  "sessionLookbackDays": 7,
+  "cursorAgent": {
+    "enabled": true,
+    "activeWithinHours": 168
+  },
+  "codex": {
+    "activeWithinHours": 168
+  },
+  "productReaders": {
+    "workBuddy": true,
+    "traeIde": true,
+    "traeWork": true,
+    "wpsLingxi": true,
+    "wpsComate": true
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Agents 在忙啥</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="radar" aria-label="Agents 在忙啥">
+      <header class="topbar">
+        <div class="heading">
+          <button id="backButton" class="icon-button" type="button" title="返回任务概览" aria-label="返回任务概览" hidden></button>
+          <h1 id="pageTitle">Agents 在忙啥</h1><span id="allTasksSubtitle" hidden>最近 7 天任务记录 · 共 0 个任务</span>
+        </div>
+        <div class="header-actions">
+          <button id="refreshButton" class="icon-button" type="button" title="立即扫描" aria-label="立即扫描"></button>
+        </div>
+      </header>
+
+      <details id="scanNotice" class="scan-notice" hidden>
+        <summary id="scanNoticeTitle">部分工具读取失败</summary>
+        <p id="scanErrors"></p>
+      </details>
+      <details id="connectionNotice" class="connection-notice" hidden>
+        <summary id="connectionNoticeTitle">本机工具还没连上</summary>
+        <div id="connectionList"></div>
+      </details>
+
+      <section id="overviewPage" class="page overview-page" aria-label="任务概览">
+        <p id="linkedEmpty" class="linked-empty" hidden></p>
+        <div id="overviewGroups"></div>
+      </section>
+
+      <section id="allPage" class="page all-page" aria-label="全部任务" hidden>
+        <div class="list-controls">
+          <nav class="filters" aria-label="任务筛选">
+            <button class="filter" data-filter="all" aria-pressed="false" type="button">全部</button>
+            <button class="filter" data-filter="attention" aria-pressed="false" type="button">待你处理</button>
+            <button class="filter" data-filter="completed_unseen" aria-pressed="false" type="button">待查看</button>
+            <button class="filter" data-filter="running" aria-pressed="false" type="button">进行中</button>
+            <button class="filter" data-filter="ended" aria-pressed="false" type="button">已结束</button>
+            <button class="filter" data-filter="unknown" aria-pressed="false" type="button">状态不明</button>
+          </nav>
+        </div>
+        <div id="sessionRows" class="task-list" aria-label="任务列表"></div>
+      </section>
+
+      <div id="actionNotice" class="action-notice" role="status" aria-live="polite" hidden>
+        <span id="actionMessage"></span>
+        <button id="dismissNoticeButton" class="icon-button" type="button" aria-label="关闭操作提示">×</button>
+      </div>
+      <footer class="footer">
+        <button id="allTasksButton" class="all-tasks-button" type="button">
+          <strong>查看全部任务</strong>
+          <span id="totalCount" class="total-count">最近 7 天，共 0 任务</span>
+          <span id="allTasksArrow" aria-hidden="true"></span>
+        </button>
+        <div id="listFooter" class="list-footer" hidden><span>Agent任务需在本地环境有记录才能查询到</span></div>
+      </footer>
+    </main>
+    <div id="taskFeedbackMenu" class="task-feedback-menu" role="menu" hidden>
+      <button type="button" role="menuitem">这条数据不对我要反馈</button>
+    </div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
