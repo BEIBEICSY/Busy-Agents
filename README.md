@@ -2,13 +2,13 @@
 
 英文名 Busy Agents。它住在 Mac 菜单栏里，看本机各个 AI 工具的任务现在在忙什么。
 
+[<img alt="下载 Mac 安装包 Busy-Agents-1.0.dmg" src="download-mac.svg" width="440">](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)
+
+直接下载：[Busy-Agents-1.0.dmg](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)
+
+双击后把应用拖进「应用程序」。打开的磁盘标题是「Agents 在忙啥」，里面的应用是 Busy Agents。需要 Apple 芯片的 Mac，以及本机的 Node.js 20 或更高版本。
+
 有人等你时，图标右边先写待处理数，再写正在运行的数量，例如 `1! · 2`。没有人等你时，只写运行数。
-
-## 下载
-
-[下载 1.0](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)。文件名是 `Busy-Agents-1.0.dmg`。也可以从 [Releases](https://github.com/BEIBEICSY/Busy-Agents/releases/latest) 打开。
-
-双击打开后，磁盘标题是「Agents 在忙啥」，里面的应用是 Busy Agents。
 
 ## 安装
 
