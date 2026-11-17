@@ -7,6 +7,9 @@ node_modules/
 # rebuildable Mac app (`npm run build:mac`)
 dist/
 
+# official Node runtime downloaded while building the Mac app
+.cache/
+
 # local browser automation traces
 .playwright-cli/
 

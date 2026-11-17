@@ -29,6 +29,7 @@ swiftc \
   -module-cache-path "${BUILD_ROOT}/ModuleCache" \
   -framework AppKit \
   -framework SwiftUI \
+  "${SOURCE_DIR}/NodeLookup.swift" \
   "${SOURCE_DIR}/AITaskRadarApp.swift" \
   -o "${BUILD_APP}/Contents/MacOS/AITaskRadar"
 
@@ -42,6 +43,19 @@ cp -R "${PROJECT_ROOT}/public" "${BUILD_APP}/Contents/Resources/backend/public"
 cp -R "${PROJECT_ROOT}/src" "${BUILD_APP}/Contents/Resources/backend/src"
 
 SIGN_IDENTITY="${CODESIGN_IDENTITY:--}"
+NODE_BIN="${BUILD_APP}/Contents/Resources/runtime/bin/node"
+# 内置 Node 先保留，不进默认安装包。需要时再执行 BUNDLE_NODE=1 npm run build:mac。
+if [[ "${BUNDLE_NODE:-}" == "1" ]]; then
+  bash "${SCRIPT_DIR}/fetch-node-runtime.sh" "${BUILD_APP}/Contents/Resources/runtime"
+  if [[ "${SIGN_IDENTITY}" == "-" ]]; then
+    codesign --force --sign - "${NODE_BIN}"
+  else
+    codesign --force --options runtime --timestamp \
+      --entitlements "${SOURCE_DIR}/NodeRuntime.entitlements" \
+      --sign "${SIGN_IDENTITY}" "${NODE_BIN}"
+  fi
+fi
+
 if [[ "${SIGN_IDENTITY}" == "-" ]]; then
   codesign --force --deep --sign - "${BUILD_APP}"
 else

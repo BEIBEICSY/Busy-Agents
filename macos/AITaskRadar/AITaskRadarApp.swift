@@ -141,6 +141,7 @@ private final class RadarModel: ObservableObject {
     var onStatusChange: (() -> Void)?
     var onAppOpened: ((String) -> Void)?
     private var pollingTask: Task<Void, Never>?
+    private var startupError: String?
     private static let minimumRefreshIndicator: TimeInterval = 0.45
 
     var runningCount: Int {
@@ -181,6 +182,7 @@ private final class RadarModel: ObservableObject {
     }
 
     func reportStartupError(_ message: String) {
+        startupError = message
         errors = [message]
         onStatusChange?()
     }
@@ -210,6 +212,7 @@ private final class RadarModel: ObservableObject {
 
                 let payload = try JSONDecoder().decode(SessionPayload.self, from: data)
                 sessions = payload.sessions
+                startupError = nil
                 errors = payload.errors
                 connections = payload.connections ?? []
                 connectionSummary = payload.connectionSummary ?? .hidden
@@ -224,7 +227,12 @@ private final class RadarModel: ObservableObject {
                     sessionRecords = records
                 }
             } catch {
-                errors = ["读取本机任务失败：\(error.localizedDescription)"]
+                let detail = "读取本机任务失败：\(error.localizedDescription)"
+                if let startupError, sessions.isEmpty {
+                    errors = [startupError, detail]
+                } else {
+                    errors = [detail]
+                }
             }
             let remaining = Self.minimumRefreshIndicator - Date().timeIntervalSince(started)
             if remaining > 0 {
@@ -502,40 +510,10 @@ private final class BackendManager {
     private func locateNode() -> String? {
         let environment = ProcessInfo.processInfo.environment
         let home = FileManager.default.homeDirectoryForCurrentUser.path
-        let candidates = [
-            environment["AI_TASK_RADAR_NODE"],
-            "/opt/homebrew/bin/node",
-            "/usr/local/bin/node",
-            "\(home)/.local/bin/node",
-            "\(home)/.volta/bin/node",
-            "\(home)/.nvm/current/bin/node",
-            "/usr/bin/node"
-        ].compactMap { $0 }
-
-        if let candidate = candidates.first(where: {
-            FileManager.default.isExecutableFile(atPath: $0)
-        }) {
-            return candidate
-        }
-
-        let resolver = Process()
-        let output = Pipe()
-        resolver.executableURL = URL(fileURLWithPath: "/bin/zsh")
-        resolver.arguments = ["-lc", "command -v node"]
-        resolver.standardOutput = output
-        resolver.standardError = FileHandle.nullDevice
-
-        do {
-            try resolver.run()
-            resolver.waitUntilExit()
-            guard resolver.terminationStatus == 0 else { return nil }
-            let data = output.fileHandleForReading.readDataToEndOfFile()
-            let path = String(decoding: data, as: UTF8.self)
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            return FileManager.default.isExecutableFile(atPath: path) ? path : nil
-        } catch {
-            return nil
-        }
+        let bundledNode = Bundle.main.resourceURL?
+            .appendingPathComponent("runtime/bin/node")
+            .path
+        return NodeLookup.locate(home: home, environment: environment, bundledNode: bundledNode)
     }
 }
 

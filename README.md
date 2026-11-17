@@ -2,11 +2,11 @@
 
 英文名 Busy Agents。它住在 Mac 菜单栏里，看本机各个端Agent现在在忙什么。
 
-直接下载：[Busy-Agents-1.0.dmg](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.0/Busy-Agents-1.0.dmg)
+直接下载：[Busy-Agents-1.0.1.dmg](https://github.com/BEIBEICSY/Busy-Agents/releases/download/v1.0.1/Busy-Agents-1.0.1.dmg)
 
 <img alt="看看你的 Agent 都在忙些什么" src="poster.jpg" width="720">
 
-双击后把应用拖进「应用程序」。打开的磁盘标题是「Agents 在忙啥」，里面的应用是 Busy Agents。需要 Apple 芯片的 Mac，以及本机的 Node.js 20 或更高版本。
+双击后把应用拖进「应用程序」。打开的磁盘标题是「Agents 在忙啥」，里面的应用是 Busy Agents。需要 Apple 芯片的 Mac，以及本机的 Node.js 20 或更高版本。用 fnm、nvm、asdf 或 nodenv 安装的也可以，应用会自己找到。
 
 ## 安装
 
@@ -17,7 +17,7 @@
 ## 使用前
 
 - 需要 Apple 芯片的 Mac。
-- 本机需要已安装 Node.js 20 或更高版本。没有的话，应用在，扫描起不来。
+- 本机需要已安装 Node.js 20 或更高版本。用 fnm、nvm、asdf 或 nodenv 安装的也可以，应用会自己找到。没有 Node 的话，应用在，扫描起不来。
 
 ## 打开之后
 菜单栏图标会显示正在运行的数量，如果有需要处理的则会出现 2 组数字，如“1!·2”，说明有 1 个任务在等待你的响应了。

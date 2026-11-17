@@ -74,4 +74,28 @@ test('macOS app sources provide one pinnable menu bar popover', () => {
   assert.ok(source.includes('Text("最近 7 天，共 \\(model.sessions.count) 任务")'));
   assert.match(plist, /<key>LSUIElement<\/key>/);
   assert.match(buildScript, /Contents\/Resources\/backend/);
+  assert.match(buildScript, /BUNDLE_NODE/);
+  assert.match(buildScript, /fetch-node-runtime\.sh/);
+  assert.match(buildScript, /NodeRuntime\.entitlements/);
+  const bundledAt = source.indexOf('runtime/bin/node');
+  const lookupAt = source.indexOf('NodeLookup.locate');
+  assert.ok(bundledAt > 0 && lookupAt > bundledAt);
+  assert.match(buildScript, /NodeLookup\.swift/);
+  const lookup = fs.readFileSync('macos/AITaskRadar/NodeLookup.swift', 'utf8');
+  assert.match(lookup, /Application Support\/fnm/);
+  assert.match(lookup, /aliases\/default\/bin\/node/);
+  assert.match(lookup, /node-versions/);
+  assert.match(lookup, /\.nvm\/alias/);
+  assert.match(lookup, /\.asdf\/shims\/node/);
+  assert.match(lookup, /\.zshrc/);
+  assert.match(lookup, /minimumMajor = 20/);
+  assert.match(source, /startupError/);
+  const runtime = fs.readFileSync('scripts/fetch-node-runtime.sh', 'utf8');
+  assert.match(runtime, /NODE_VERSION="22\.22\.3"/);
+  assert.match(runtime, /0da7ff74ef8611328c8212f17943368713a2ad953fb7d89a8c8a0eae87c23207/);
+  assert.match(runtime, /45830ba752fa0d892c6dcd640946669801293cac820a33591ded40ac075198ec/);
+  assert.match(
+    fs.readFileSync('macos/AITaskRadar/NodeRuntime.entitlements', 'utf8'),
+    /com\.apple\.security\.cs\.allow-jit/
+  );
 });
